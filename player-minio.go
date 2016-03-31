@@ -44,10 +44,8 @@ type playlist struct {
 
 // ListsObjects from fiven storageClient and bucket.
 func listObjectsFromBucket(storageClient *minio.Client, bucket string) ([]playlist, error) {
-
 	// Create a done channel to control 'ListObjects' go routine.
 	doneCh := make(chan struct{})
-
 	// Indicate to our routine to exit cleanly upon return.
 	defer close(doneCh)
 	var objectInfos []playlist
@@ -71,7 +69,6 @@ func getUrlQueryParam(r *http.Request, param string) string {
 
 // Get a presigned access URL for the given object for the specified ttl period.
 func getPreSignedUrl(storageClient *minio.Client, bucket, objectName string, ttl int, reqParams url.Values) (string, error) {
-
 	presignedURL, err := storageClient.PresignedGetObject(BUCKET_NAME, objectName, time.Duration(ttl)*time.Second, reqParams)
 	if err != nil {
 		return "", err
@@ -86,7 +83,6 @@ func newStorageClient(storage, accessKey, secretKey string, enableInsecure bool)
 		return nil, err
 	}
 	return storageClient, nil
-
 }
 
 func main() {
