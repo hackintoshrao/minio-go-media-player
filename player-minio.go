@@ -26,10 +26,12 @@ var (
 // ENABLE_INSECURE = true , for http only connection.
 // ENABLE_INSECURE = false, for https connection.
 const (
+	// points to S3 by default.
 	STORAGE         = "s3.amazonaws.com"
-	ACCESSKEYID     = "AKIAIBVF3NRPLX5ZEYZA"
-	SECRETACCESSKEY = "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"
-	BUCKET_NAME     = "karthicminio"
+	ACCESSKEYID     = ""
+	SECRETACCESSKEY = ""
+	BUCKET_NAME     = ""
+	// set to false by default.
 	ENABLE_INSECURE = false
 )
 
@@ -37,7 +39,7 @@ const (
 // Used for sending the response from listObjects for the player.
 type playlist struct {
 	Key string
-	Url string
+	URL string
 }
 
 // ListsObjects from fiven storageClient and bucket.
@@ -134,7 +136,7 @@ func ListObjects(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, err.Error(), 500)
 			return
 		}
-		objects[0].Url = presignedURL
+		objects[0].URL = presignedURL
 	}
 	json.NewEncoder(w).Encode(objects)
 }
