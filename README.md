@@ -4,7 +4,7 @@
  
  Here is how to use the player. 
  1. Upload your MP3 to a single bucket in S3 or Minio Server. 
- 2. Open [player-minio.go](https://github.com/hackintoshrao/minio-go-media-player/blob/master/player-minio.go)
+ 2. Open [player-minio.go](https://github.com/hackintoshrao/minio-go-media-player/blob/master/player-minio.go).
  3. Edit the [configuration](https://github.com/hackintoshrao/minio-go-media-player/blob/master/player-minio.go#L19) as directed in the code.(Basically setting 
  up your service address,access and secret keys).
  4. Run the server. 
