@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+
+<title>Minio Media Player</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="jplayer/jplayer.pink.flag.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jplayer/jquery.min.js"></script>
+<script type="text/javascript" src="jplayer/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="jplayer/jplayer.playlist.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+
+    // $("#jquery_jplayer_1").bind($.jPlayer.event.play, function(event) { // Add a listener to report the time play began
+    //     // Get the pathname and homepage values in a manner suitable to your
+    //     // application before the following check.
+    // 		console.log("play evnt captured");
+    // });
+    // If you need t
+    // 	 $(this).bind($.jPlayer.event.playing, function() {
+    // 	 console.Info("playing")
+    //   });
+    // 	$(this).bind($.jPlayer.event.play, function() {
+    // 	console.Info("playing")
+    //  });
+    // 	$(this).bind($.jPlayer.event.setMedia, function() {
+    // 	console.Info("playing")
+    //  });
+
+
+    var listObjects = [];
+    $.ajax({
+        type: 'GET',
+        url: '/list',
+        datatype: 'json',
+        success: function(data) {
+            console.info("inside sucess")
+
+            var response = $.parseJSON(data)
+
+            for (i in response) {
+
+                listObjects.push({
+                    title: response[i].Key,
+                    artist: "",
+                    mp3: "http://www.jplayer.org/audio/mp3/TSP-07-Cybersonnet.mp3",
+                    poster: "jplayer/image/minio.jpg"
+                })
+            }
+            console.log(listObjects)
+            new jPlayerPlaylist({
+                jPlayer: "#jquery_jplayer_1",
+                cssSelectorAncestor: "#jp_container_1"
+            }, listObjects, {
+                swfPath: "jplayer",
+                solution: "flash, html",
+                supplied: "mp3",
+                useStateClassSkin: true,
+                autoBlur: false,
+                smoothPlayBar: true,
+                keyEnabled: true,
+                audioFullScreen: true,
+                ready: function(e) {
+                    console.log(e.jPlayer.status.media.toString());
+                    $(".jp-playlist-item").click(function(event) { // Add a listener to report the time play began
+                        // Get the pathname and homepage values in a manner suitable to your
+                        // application before the following check.
+                        console.log("click evnt captured");
+                        //console.log($(".jp-playlist-current a:first").text())
+                    });
+                    // var activeMedia = $("a.jp-playlist-current").html()
+                    // console.info(activeMedia)
+                },
+                  // setmedia: function(e) {
+                  //     console.log("setmedia")
+                  //     console.log(e.jPlayer.status.media)
+                  //     //e.jPlayer.status.media.mp3 = "http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3"
+                  //     //console.log(e.jPlayer.status.media)
+                  //     // $(this).jPlayer( "setMedia", {
+                  //     //     mp3: "http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3",
+                  //     //
+                  //     // });
+                  //
+                  // },
+                loadstart: function(e) {
+                    console.log("load start")
+                    var activeMedia = $("a.jp-playlist-current").html()
+                    console.info(activeMedia)
+                    $(this).jPlayer( "setMedia", {
+                        mp3: "http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3",
+
+                    });
+
+                }
+            });
+
+            $("#jquery_jplayer_1").bind($.jPlayer.event.play, function(event) { // Add a listener to report the time play began
+                // Get the pathname and homepage values in a manner suitable to your
+                // application before the following check.
+                console.log("play evnt captured");
+            });
+        }
+
+
+    })
+})
+//]]>
+</script>
+</head>
+<body>
+<div id="jp_container_1" class="jp-video jp-video-270p" role="application" aria-label="media player">
+	<div class="jp-type-playlist">
+		<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+		<div class="jp-gui">
+			<div class="jp-video-play">
+				<button class="jp-video-play-icon" role="button" tabindex="0">play</button>
+			</div>
+			<div class="jp-interface">
+				<div class="jp-progress">
+					<div class="jp-seek-bar">
+						<div class="jp-play-bar"></div>
+					</div>
+				</div>
+				<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+				<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+				<div class="jp-details">
+					<div class="jp-title" aria-label="title">&nbsp;</div>
+				</div>
+				<div class="jp-controls-holder">
+					<div class="jp-volume-controls">
+						<button class="jp-mute" role="button" tabindex="0">mute</button>
+						<button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+						<div class="jp-volume-bar">
+							<div class="jp-volume-bar-value"></div>
+						</div>
+					</div>
+					<div class="jp-controls">
+						<button class="jp-previous" role="button" tabindex="0">previous</button>
+						<button class="jp-play" role="button" tabindex="0">play</button>
+						<button class="jp-stop" role="button" tabindex="0">stop</button>
+						<button class="jp-next" role="button" tabindex="0">next</button>
+					</div>
+					<div class="jp-toggles">
+						<button class="jp-repeat" role="button" tabindex="0">repeat</button>
+						<button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
+						<button class="jp-full-screen" role="button" tabindex="0">full screen</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="jp-playlist">
+			<ul>
+				<!-- The method Playlist.displayPlaylist() uses this unordered list -->
+				<li></li>
+			</ul>
+		</div>
+		<div class="jp-no-solution">
+			<span>Update Required</span>
+			To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+		</div>
+	</div>
+</div>
+</body>
+
+</html>
