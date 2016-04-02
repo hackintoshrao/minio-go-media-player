@@ -33,7 +33,7 @@ $ go get github.com/minio/minio-go
 
     ~~~~
     set AWS_ACCESS_KEY=your-access-key
-    set AWS_SECRET_ACCESS=your-secret-key
+    set AWS_SECRET_KEY=your-secret-key
     ~~~~
 
 
