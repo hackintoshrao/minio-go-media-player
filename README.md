@@ -10,7 +10,7 @@
 
  - Amazon s3 account or a running instance Minio Server.
    [Click here for setting up Minio server](https://github.com/minio/minio#install-).
- - Keep your media files in the S3 or [Minio](www.minio.io) bucket. 
+ - Keep your media files in the S3 or Minio bucket. 
  - Install Minio-go library
 Note : If you do not have a working Golang environment, please follow [Install Golang](./INSTALLGO.md).
 
