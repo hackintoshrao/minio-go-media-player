@@ -48,7 +48,9 @@ $ go get github.com/minio/minio-go
 `-b`  sets the bucket name , and its mandatory. 
 
 `-e` sets the endpoint,  defaults to  s3.amazonaws.com. 
-     set the endpoint to localhost:9000 testing with [Minio](www.github.com/minio/minio) locally.
+
+     Set the endpoint to localhost:9000 for using with [Minio](www.github.com/minio/minio) server running locally.
+     
      set it to the ip address of the host if Minio server is run remotely.
    
 `-i` sets the enable_insecure flag. set to `false` by default. Set it to `true` only for insecure connection. 
