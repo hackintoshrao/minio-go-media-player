@@ -45,15 +45,15 @@ $ go get github.com/minio/minio-go
     go run player-minio.go -b <bucket-name>
     ~~~~
     
-`-b` sets the bucket name , and its mandatory. 
+- `-b` sets the bucket name , and its mandatory. 
 
-`-e` sets the endpoint,  defaults to  s3.amazonaws.com. 
+- `-e` sets the endpoint,  defaults to  s3.amazonaws.com. 
 
- Set the endpoint to localhost:9000 for using with [Minio](www.github.com/minio/minio) server running locally.
+   - Set the endpoint to localhost:9000 for using with [Minio](www.github.com/minio/minio) server running locally.
      
- set it to the ip address of the host if Minio server is run remotely.
+   - set it to the ip address of the host if Minio server is run remotely.
    
-`-i` sets the enable_insecure flag. It is set to `false` by default. It is set to `true` only for insecure connection. 
+- `-i` sets the enable_insecure flag. It is set to `false` by default. It is set to `true` only for insecure connection. 
 
 ## Additional Links 
 - [Minio-go] (www.github.com/minio/minio-go)
