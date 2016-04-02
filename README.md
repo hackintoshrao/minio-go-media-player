@@ -50,3 +50,7 @@ $ go get github.com/minio/minio-go
      set it to the ip address of the host if Minio server is run remotely.
    
 `-i` sets the enable_insecure flag. set to `false` by default. Set it to `true` only for insecure connection. 
+
+## Additional Links 
+- [Minio-go] (www.github.com/minio/minio-go)
+- [More examples using Minio-Go library](https://github.com/minio/minio-go#example)
