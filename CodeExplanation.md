@@ -1,6 +1,6 @@
 ## Code Explanation
 
-List your objects during initialiation.
+List your objects during initialization.
 
 [ListObjects](https://github.com/minio/minio-go/blob/master/examples/s3/listobjects.go) is called on the specifed bucket
 during the intialization of the player. The objects in the specified bucket will be rendered in the playlist 
