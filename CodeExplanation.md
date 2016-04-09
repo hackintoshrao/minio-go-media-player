@@ -4,7 +4,7 @@ List your objects.
 
 [ListObjects](https://github.com/minio/minio-go/blob/master/examples/s3/listobjects.go) is called on the specified bucket when player is initialized. These objects will be rendered as playlist for media player as shown in the player image above.
 
-```golang
+```go
 for objectInfo := range api.storageClient.ListObjects(*bucketName, "", isRecursive, doneCh) {
   if objectInfo.Err != nil {
 		http.Error(w, objectInfo.Err.Error(), http.StatusInternalServerError)
@@ -26,7 +26,7 @@ for objectInfo := range api.storageClient.ListObjects(*bucketName, "", isRecursi
 
 ```
 Secure URLs are generated on demand when requested to play, underlying mechanism is [PreSignedGetObject]((https://github.com/minio/minio-go/blob/master/examples/s3/presignedgetobject.go)). This secure URL is used by the player to stream and play the media from the bucket.
-```golang
+```go
 // GetPresignedURLHandler - generates presigned access URL for an object.
 func (api mediaHandlers) GetPresignedURLHandler(w http.ResponseWriter, r *http.Request) {
 	// The object for which the presigned URL has to be generated is sent as a query
