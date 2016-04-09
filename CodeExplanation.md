@@ -1,5 +1,6 @@
 ## Code Explanation
-## Objects in the bucket listed during initialiation.
+
+List your objects during initialiation.
 
 [ListObjects](https://github.com/minio/minio-go/blob/master/examples/s3/listobjects.go) is called on the specifed bucket
 during the intialization of the player. The objects in the specified bucket will be rendered in the playlist 
@@ -26,8 +27,10 @@ for objectInfo := range api.storageClient.ListObjects(*bucketName, "", isRecursi
 	w.Write(playListEntriesJSON)
 
 ```
-## Secure URLs are generated on demand when requested to play. 
-[PreSignedGetObject](https://github.com/minio/minio-go/blob/master/examples/s3/presignedgetobject.go) is used for the purpose. 
+
+Secure URLs are generated on demand when requested to play, underlying mechanism is  [PreSignedGetObject](https://github.com/minio/minio-go/blob/master/examples/s3/presignedgetobject.go) is used for the purpose. When requested to play the server generates secure URL for the media, this will be used by the player to
+stream and play the media from the bucket.
+
 ```golang
 // GetPresignedURLHandler - generates presigned access URL for an object.
 func (api mediaHandlers) GetPresignedURLHandler(w http.ResponseWriter, r *http.Request) {
@@ -46,5 +49,3 @@ func (api mediaHandlers) GetPresignedURLHandler(w http.ResponseWriter, r *http.R
 	w.Write([]byte(presignedURL))
 }
 ```
-When requested to play the server generates secure URL for the media,this will be used by the player to
-stream and play the media from the bucket.
