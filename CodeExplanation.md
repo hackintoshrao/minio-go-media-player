@@ -1,10 +1,8 @@
 ## Code Explanation
 
-List your objects during initialization.
+List your objects.
 
-[ListObjects](https://github.com/minio/minio-go/blob/master/examples/s3/listobjects.go) is called on the specifed bucket
-during the intialization of the player. The objects in the specified bucket will be rendered in the playlist 
-of the media player as shown in the player image above.
+[ListObjects](https://github.com/minio/minio-go/blob/master/examples/s3/listobjects.go) is called on the specified bucket when player is initialized. These objects will be rendered as playlist for media player as shown in the player image above.
 
 ```golang
 for objectInfo := range api.storageClient.ListObjects(*bucketName, "", isRecursive, doneCh) {
