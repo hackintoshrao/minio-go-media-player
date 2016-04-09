@@ -25,7 +25,7 @@ for objectInfo := range api.storageClient.ListObjects(*bucketName, "", isRecursi
 	w.Write(playListEntriesJSON)
 
 ```
-"Secure URLs are generated on demand when requested to play, underlying mechanism is [PreSignedGetObject]((https://github.com/minio/minio-go/blob/master/examples/s3/presignedgetobject.go)). This secure URL is used by the player to stream and play the media from the bucket."
+Secure URLs are generated on demand when requested to play, underlying mechanism is [PreSignedGetObject]((https://github.com/minio/minio-go/blob/master/examples/s3/presignedgetobject.go)). This secure URL is used by the player to stream and play the media from the bucket.
 ```golang
 // GetPresignedURLHandler - generates presigned access URL for an object.
 func (api mediaHandlers) GetPresignedURLHandler(w http.ResponseWriter, r *http.Request) {
