@@ -1,6 +1,6 @@
 ## Code Explanation
 
-List your objects.
+List objects.
 
 [ListObjects](https://github.com/minio/minio-go/blob/master/examples/s3/listobjects.go) is called on the specified bucket when player is initialized. These objects will be rendered as playlist for media player as shown in the player image above.
 
